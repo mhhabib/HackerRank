@@ -2,21 +2,19 @@
 using namespace std;
 int main()
 {
-    int n,x,cnt=0;
-    vector<int>v,v1;
+    int n;
     cin>>n;
+    int arr[n+2];
+    map<int,int>mp;
     for(int i=0;i<n;i++){
-        cin>>x;
-        v.push_back(x);
+        cin>>arr[i];
+        mp[arr[i]]++;
     }
-    sort(v.begin(),v.end());
-    for(int i=0;i<n-1;i++){
-        if(v[i]==v[i+1]){
-            v1.push_back(v[i]);
-            cnt++;
-        }
+    int mx=0;
+    for(int i=0;i<mp.size();i++){
+        if(mp[mx]<mp[i])
+            mx=i;
     }
-    for(int i=0;i<v1.size();i++)
-        cout<<v1[i]<<" ";
+    cout<<mx<<endl;
     return 0;
 }
